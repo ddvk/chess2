@@ -8,7 +8,7 @@ win32 {
     RC_FILE = chess.rc
 }
 
-OTHER_FILES =	Board.qml \
+OTHER_FILES =	\
 				Cell.qml \
 				main.qml
 				
@@ -29,7 +29,7 @@ DISTFILES += \
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
-OTHER_FILES += android/AndroidManifest.xml
+OTHER_FILES +=
 
 linux-oe-g++ {
     message("rm")

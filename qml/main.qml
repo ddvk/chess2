@@ -31,8 +31,8 @@ Window {
     property int offset: 16
     property int minSize: offset * 2 + 50 * 8
 
-    width: 1404
-    height: 1807
+    width: screen.width
+    height: screen.height
 
     Rectangle {
         id: rect
@@ -49,9 +49,9 @@ Window {
         Board {
             id: board
             width: Math.min( parent.width,
-                parent.height - offset - undoBtn.height - 10 - turn.height )
+                    parent.height - offset - undoBtn.height - 10 - turn.height )
             height: Math.min( parent.width,
-                parent.height - offset - undoBtn.height - 10 - turn.height )
+                     parent.height - offset - undoBtn.height - 10 - turn.height )
             x: Math.abs( rect.width - width ) / 2
             y: Math.abs( rect.height - height - turn.height - undoBtn.height - 10 ) / 2 + undoBtn.height + 10
 
@@ -68,6 +68,50 @@ Window {
             font.pixelSize: 14
 
             text: qsTr( "White" )
+        }
+        Row {
+            id: bottomKeys
+            y:turn.y+turn.height
+            Rectangle {
+                width: 150
+                height: 150
+                border.color: "black"
+
+                Text {
+                    text: "Quit"
+                    anchors.centerIn: parent
+
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        Qt.quit()
+                    }
+
+
+                }
+            }
+            Rectangle {
+                width: 150
+                height: 150
+                border.color: "black"
+
+                Text {
+                    text: "Reset"
+                    anchors.centerIn: parent
+
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        board.newGame()
+                    }
+
+
+                }
+            }
         }
     }
 

@@ -9,3 +9,5 @@
 /**/*.moc
 /**/ui_*.h
 /**/qrc_*.cpp
+chess
+*.user

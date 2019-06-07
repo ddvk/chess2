@@ -538,7 +538,7 @@ Board::markBlue( int x, int y )
 
 	const QModelIndex idx = index( y * 8 + x, 0 );
 
-	emit dataChanged( idx, idx );
+//	emit dataChanged( idx, idx );
 }
 
 void
