@@ -77,7 +77,7 @@ Item {
 
     MouseArea {
         anchors.fill: parent
-        hoverEnabled: true
+        hoverEnabled: false
 
         onClicked: cell.clicked( chessX, chessY )
 //        onEntered: cell.hovered( chessX, chessY )

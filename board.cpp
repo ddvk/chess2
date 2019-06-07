@@ -25,6 +25,7 @@
 
 // C++ include.
 #include <algorithm>
+#include <QtGlobal>
 
 // Qt include.
 #include <QColor>
@@ -76,7 +77,7 @@ Board::operator = ( const Board & other )
 void
 Board::copyState( const Board & other )
 {
-	for( const auto & o : qAsConst( other.m_transformed ) )
+    for( auto & o : other.m_transformed  )
 		m_transformed.append( o->copy() );
 
 	for( int i = 0; i < 8; ++i )

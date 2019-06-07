@@ -20,7 +20,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import QtQuick 2.7
+import QtQuick 2.6
 
 Rectangle {
     property int offset: 16
@@ -28,7 +28,7 @@ Rectangle {
     property int cellHeight: ( height - offset * 2 ) / 8
 
     id: board
-    transform: rot
+//    transform: rot
 
     property alias rotation: rot.angle
 
@@ -39,35 +39,15 @@ Rectangle {
         angle: 0
     }
 
-    PropertyAnimation {
-        id: anim
-        duration: 300
-        target: board
-        from: ( rot.angle === 0 ? 0 : ( rot.angle === 360 ? 0 : 180 ) )
-        to: ( rot.angle === 0 ? 180 : ( rot.angle === 360 ? 180 : 360 ) )
-        property: "rotation"
-    }
 
     Connections {
         target: game
 
         onRotate: {
-            if( angle === -1 )
-                anim.start()
+            if( rot.angle === 0 )
+                rot.angle = 180
             else
                 rot.angle = 0
-        }
-    }
-
-    Connections {
-        target: anim
-
-        onStarted: {
-            rotationStarted()
-        }
-
-        onStopped: {
-            rotationDone()
         }
     }
 

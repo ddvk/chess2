@@ -1,7 +1,7 @@
 
 TEMPLATE = app
 TARGET = chess
-QT += qml
+QT += qml quick
 CONFIG += c++14
 
 win32 {
@@ -25,11 +25,14 @@ HEADERS =	figures.hpp \
 RESOURCES = resources.qrc
 
 DISTFILES += \
-    TransformDialog.qml \
-    DrawGameDialog.qml \
-    CheckMateDialog.qml \
     UndoBtn.qml
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 OTHER_FILES += android/AndroidManifest.xml
+
+linux-oe-g++ {
+    message("rm")
+    LIBS += -lqsgepaper
+    DEFINES += RM
+}

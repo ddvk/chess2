@@ -559,7 +559,7 @@ Game::markCheck( King * king, Figure * figure, bool checkmate )
 						{
 							m_isChess = true;
 
-							for( auto & p : qAsConst( turns ) )
+                            for( auto & p :  turns  )
 							{
 								if( !checkmate )
 									m_board.markCheck( p.first, p.second );
@@ -585,7 +585,7 @@ Game::markCheck( King * king, Figure * figure, bool checkmate )
 					{
 						m_isChess = true;
 
-						for( auto & p : qAsConst( turns ) )
+                        for( auto & p :  turns  )
 						{
 							if( !checkmate )
 								m_board.markCheck( p.first, p.second );

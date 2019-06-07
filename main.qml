@@ -21,19 +21,18 @@
 */
 
 import QtQuick.Window 2.2
-import QtQuick 2.7
-import QtQuick.Controls 2.2
+import QtQuick 2.6
 import ChessSignals 1.0
 
-ApplicationWindow {
+Window {
     id: appWindow
     visible: true
 
     property int offset: 16
     property int minSize: offset * 2 + 50 * 8
 
-    width: minSize
-    height: minSize + offset + 64
+    width: 1404
+    height: 1807
 
     Rectangle {
         id: rect
@@ -70,31 +69,6 @@ ApplicationWindow {
 
             text: qsTr( "White" )
         }
-    }
-
-    CheckMateDialog {
-        id: checkmate
-
-        appWindowSize: Qt.size( appWindow.width, appWindow.height )
-        turnText: turn.text
-
-        onClosed: { board.newGame() }
-    }
-
-    DrawGameDialog {
-        id: drawgame
-
-        appWindowSize: Qt.size( appWindow.width, appWindow.height )
-
-        onClosed: { board.newGame() }
-    }
-
-    TransformDialog {
-        id: transform
-
-        appWindowSize: Qt.size( appWindow.width, appWindow.height )
-
-        onClosed: { board.transformation( figure, color, fx, fy ) }
     }
 
     Connections {

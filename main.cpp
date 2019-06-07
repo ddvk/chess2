@@ -25,6 +25,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QIcon>
+#include <QtQuick>
 
 // Chess include.
 #include "game.hpp"
@@ -32,20 +33,19 @@
 #include "signals.hpp"
 
 
+#ifdef RM
+    Q_IMPORT_PLUGIN(QsgEpaperPlugin)
+#endif
+
 int main( int argc, char ** argv )
 {
+#ifdef RM
+     qputenv("QMLSCENE_DEVICE", "epaper");
+     qputenv("QT_QPA_PLATFORM", "epaper:enable_fonts");
+     qputenv("QT_QPA_EVDEV_TOUCHSCREEN_PARAMETERS", "rotate=180");
+     qputenv("QT_QPA_GENERIC_PLUGINS", "evdevtablet");
+#endif
 	QGuiApplication app( argc, argv );
-
-	QIcon appIcon( ":/img/icon256x256.png" );
-	appIcon.addFile( ":/img/icon128x128.png" );
-	appIcon.addFile( ":/img/icon64x64.png" );
-	appIcon.addFile( ":/img/icon48x48.png" );
-	appIcon.addFile( ":/img/icon32x32.png" );
-	appIcon.addFile( ":/img/icon22x22.png" );
-	appIcon.addFile( ":/img/icon16x16.png" );
-	appIcon.addFile( ":/img/icon8x8.png" );
-	app.setWindowIcon( appIcon );
-
 
 	QQmlApplicationEngine engine;
 	Chess::Board board;
